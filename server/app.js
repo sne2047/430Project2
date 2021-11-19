@@ -25,9 +25,20 @@ mongoose.connect(dbURL, (err) => {
 });
 
 //redis stufffffff
-//Skipped for now cause getting redis properly set up for this w/o breaking domomaker...
-//yeaaaah tiring, worn out.
-//also there's more redis stuff a bit further down. be sure to get that too.
+let redisURL = {
+    hostname: 'redis-17320.c244.us-east-1-2.ec2.cloud.redislabs.com',
+    port: '17320',
+}
+let redisPASS = '4mutNNzZzMP3CUpAKuaqcSlHguJj1qNL';
+if (process.env.REDISCLOUD_URL) {
+  redisURL = url.parse(process.env.REDISCLOUD_URL);
+  [, redisPASS] = redisURL.auth.split(':');
+}
+const redisClient = redis.createClient({
+  host: redisURL.hostname,
+  port: redisURL.port,
+  password: redisPASS,
+});
 
 //bring in our router
 const router = require('./router.js');
@@ -42,7 +53,18 @@ app.use(bodyParser.urlencoded({
     extended: true,
 }));
 //more redis stuffffff
-//needs to be put here
+app.use(session({
+    key: 'sessionid',
+    store: new RedisStore({
+      client: redisClient,
+    }),
+    secret: 'Master of Dragons tis I',
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      httpOnly: true,
+    },
+  }));
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/../views`);
