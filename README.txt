@@ -4,8 +4,7 @@ Use this document to keep track of plans, bugs i have to deal with but are tabli
 Current task: 
 Get the basics of creating an account and logging into one copied from previous.
 Components to this task:
-App.js get redis set up properly and all redis associated stuff <- I think this the most important for next task
-Add stylesheets under /assets/style.css
+Add stylesheets under /assets/style.css, enough that its like usable
 replace placeholder images
 sections for react to play with in main.handlebars
 
@@ -17,6 +16,7 @@ Added a favicon
 middleware set up
 router got account stuff in there
 handlebars exists
+got redis
 
 notes- 
     -instead of /maker, send people to /dragons, the page that will show the user their created dragons

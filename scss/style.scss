@@ -1,0 +1,68 @@
+/*yeah idk what im putting for css, start with based off of prev proj and tweak as I please i guess*/
+/*honestly the css style thing sass probably a good idea*/
+/*so I can make changes more easily*/
+/*remember variable syntax: $varname: varValue; then you ccan use $varName wherever*/
+
+
+/*--------------------------------Vars--------------------*/
+$logoDimension: 40px;
+$logoBorder: 8px;
+
+$navWidth: 100%;
+$navHeight: 50px;
+
+$buttonTextSize: 1.3em;
+
+/*-------------------------------Colors Specifically---------------*/
+$accentBackground: #55acee;
+$buttonText: white;
+$buttonHover: #66bdff;
+
+
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden
+}
+
+#logo{
+    height:$logoDimension;
+    width:$logoDimension;
+    float:left;
+    border-radius: $logoBorder;
+}
+
+nav{
+    width:$navWidth;
+    height:$navHeight;
+    background-color: $accentBackground;
+}
+
+nav:nth-child(1){
+    padding-left: 25px;
+}
+
+.navlink{
+    padding: 5px;
+    padding-top: 12px;
+    padding-left: 20px;
+    color:$buttonText;
+    font-size:$buttonTextSize;
+    float:left;
+}
+
+.navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active{
+    color:$buttonText;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: $accentBackground;
+    transition: background-color 0.4s ease;
+}
+
+.navlink a:hover{
+    transition: background-color 0.8s ease;
+    background-color: $buttonHover;
+}
