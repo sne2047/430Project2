@@ -1,3 +1,46 @@
-/*yeah idk what im putting for css, figure it out as I go and tweak as I please i guess*/
-/*honestly the uhhh the css style thing probably handy*/
+/*yeah idk what im putting for css, start with based off of prev proj and tweak as I please i guess*/
+/*honestly the css style thing sass probably a good idea*/
 /*so I can make changes more easily*/
+/*remember variable syntax: $varname: varValue; then you ccan use $varName wherever*/
+/*--------------------------------Vars--------------------*/
+/*-------------------------------Colors Specifically---------------*/
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; }
+
+#logo {
+  height: 40px;
+  width: 40px;
+  float: left;
+  border-radius: 8px; }
+
+nav {
+  width: 100%;
+  height: 50px;
+  background-color: #55acee; }
+
+nav:nth-child(1) {
+  padding-left: 25px; }
+
+.navlink {
+  padding: 5px;
+  padding-top: 12px;
+  padding-left: 20px;
+  color: white;
+  font-size: 1.3em;
+  float: left; }
+
+.navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #55acee;
+  transition: background-color 0.4s ease; }
+
+.navlink a:hover {
+  transition: background-color 0.8s ease;
+  background-color: #66bdff; }

@@ -13,6 +13,9 @@ const router = (app) => {
     app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 
     //dragons stuff later
+    app.get('/maker', mid.requiresLogin, controllers.Dragon.makerPage);
+    app.post('/maker', mid.requiresLogin, controllers.Dragon.makeDragon);
+    app.get('/getDragons', mid.requiresLogin, controllers.Dragon.getDragons);
 };
 
 module.exports = router;

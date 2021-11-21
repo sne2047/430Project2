@@ -56,7 +56,7 @@ const signup = (request, response) => {
         const accountData = {
             username: req.body.username,
             salt,
-            pasword: hash,
+            password: hash,
         };
 
         const newAccount = new Account.AccountModel(accountData);
@@ -65,7 +65,7 @@ const signup = (request, response) => {
 
         savePromise.then(() => {
             req.session.account = Account.AccountModel.toAPI(newAccount);
-            res.json({redirect: '/dragons'});
+            res.json({redirect: '/maker'});
         });
 
         savePromise.catch((err) => {

@@ -7,7 +7,9 @@
     "start": "node ./server/app.js",
     "pretest": "eslint ./server --fix",
     "test": "echo \"Tests complete\"",
-    "buildSass": "node-sass --include-path scss ./scss/style.scss ./hosted/style.css"
+    "buildSass": "node-sass --include-path scss ./scss/style.scss ./hosted/style.css",
+    "buildLoginBundle": "babel ./client/login ./client/helper --presets @babel/preset-react --out-file ./hosted/loginBundle.js",
+    "buildAppBundle": "babel ./client/app ./client/helper --presets @babel/preset-react --out-file ./hosted/bundle.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -26,7 +28,7 @@
     "underscore": "^1.13.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15.7",
+    "@babel/cli": "^7.16.0",
     "@babel/compat-data": "^7.16.0",
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",

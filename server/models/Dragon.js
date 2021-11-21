@@ -25,11 +25,33 @@ const DragonSchema = new mongoose.Schema({
     },
 
     //various dragon properties
+    //update min and max as add more stuffffff
     bodyColor:{
         type: Number,
         required: true,
         min: 0,
         max: 3
+    },
+
+    hornType:{
+        type: Number,
+        required: true,
+        min: 0,
+        max: 2
+    },
+
+    hornColor:{
+        type: Number,
+        required: true,
+        min: 0,
+        max: 2
+    },
+
+    eyeType: {
+        type: Number,
+        required: true,
+        min: 0,
+        max: 2
     },
 
     owner: {
@@ -117,23 +139,38 @@ const eyeTypes = {
         premium: false
     },
     2:{
-        name: "Multi-eye",
+        name: "Multiple",
         //img link
         premium: true
     }
 };
 
 //and some static lookup functions
+DragonSchema.statics.isOptionPremium = (type, value) => {
+    if(type == 0 || type == "bodyColor"){
+        return bodyColors[value].premium;
+    }
+    else if(type == 1 || type == "hornType"){
+        return hornTypes[value].premium;
+    }
+    else if(type == 2 || type == "hornColor"){
+        return hornColors[value].premium;
+    }
+    else if(type == 3 || type == "eyeType"){
+        return eyeTypes[value].premium;
+    }
+    else{
+        return false;
+    }
+}
 
 //one to get a dragon's description
+DragonSchema.statics.getDescription = (doc) => (
+    `This dragon is named ${doc.name}. It is ${bodyColors[doc.bodyColor].name} and has ${hornColors[doc.hornColor].name} ${hornTypes[doc.hornType].name} horns. 
+    It has ${eyeTypes[doc.eyeType].name} eyes.`);
+
 
 //one later, to get a dragon's imgs
-
-//one to get just a name by index
-
-
-
-
 
 
 //General statics
@@ -141,6 +178,10 @@ const eyeTypes = {
 DragonSchema.statics.toAPI = (doc) => ({
     name: doc.name,
     //add all the other properties once I decide on them and add to schema
+    bodyColor: bodyColors[doc.bodyColor].name,
+    hornColor: hornColors[doc.hornColor].name,
+    hornType: hornType[doc.hornType].name,
+    eyeType: eyeTypes[doc.eyeType].name,
 });
 
 DragonSchema.statics.findByOwner = (ownerId, callback) => {
@@ -148,7 +189,7 @@ DragonSchema.statics.findByOwner = (ownerId, callback) => {
         owner: convertId(ownerId),
     };
 
-    return DragonModel.find(search).select('name'/*add other properties*/).lean().exec(callback);
+    return DragonModel.find(search).select('name bodyColor hornColor hornType eyeType').lean().exec(callback);
 };
 
 DragonModel = mongoose.model('Dragon', DragonSchema);
