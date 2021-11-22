@@ -1,10 +1,19 @@
 This is my project 2 for IGME 430.
 Use this document to keep track of plans, bugs i have to deal with but are tabling for now, etc
 
-Current tasks
+To-Dos
+fix redirect on dragon creation
 replace placeholder images
-get dragons to display- possibly have a seperate page to only view not create at some point
-get dragon.js to work
+get dragon art in there and workig
+actual css and some html design 
+    -thinking central column w/ nice background image?
+    -actually get own color scheme, thinking reds/pinks with a lot of yellow details?
+ability to look at a user's dragons without avtually being logged in as them
+    -a page for each user, perhaps /username shows their public page?
+add a user page
+    -log in to access
+    -can get premium
+    -can change password
 
 Done:
 Account controller and models

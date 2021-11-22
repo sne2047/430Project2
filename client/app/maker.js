@@ -9,6 +9,9 @@ const handleDragon = (e) => {
     }
 
     //send ajax but unsure what with quite yet
+    sendAjax('POST', $("#dragonForm").attr("action"), $("dragonForm").serialize(), function() {
+        loadDragonsFromServer();
+    });
 
     return false;
 };
