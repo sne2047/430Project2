@@ -8,8 +8,8 @@ const handleDragon = (e) => {
         return false;
     }
 
-    //send ajax but unsure what with quite yet
-    sendAjax('POST', $("#dragonForm").attr("action"), $("dragonForm").serialize(), function() {
+
+    sendAjax('POST', $("#dragonForm").attr("action"), $("#dragonForm").serialize(), function() {
         loadDragonsFromServer();
     });
 
@@ -19,7 +19,7 @@ const handleDragon = (e) => {
 const DragonForm = (props) => {
     return (
         <form id="dragonForm"
-                onsubmit={handleDragon}
+                onSubmit={handleDragon}
                 name="dragonForm"
                 action="/maker"
                 method="POST"

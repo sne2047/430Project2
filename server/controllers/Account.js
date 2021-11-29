@@ -11,6 +11,13 @@ const logout = (req, res) => {
     res.redirect('/');
 };
 
+const userPage = (req, res) => {
+    //this is to be the page w/ password change form and ability to get premium
+    //okay so it's probably gonna need to call something from the client stuff like login page
+    //and then have the ability to change password and enable premium from there
+    //probably going to need seperate functions for that. I think?
+}
+
 const login = (request, response) => {
     const req = request;
     const res = response;

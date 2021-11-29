@@ -5,10 +5,9 @@ const handleDragon = e => {
   if ($("#dragonName").val() == '') {
     //possibly if any of the others are at -1?
     return false;
-  } //send ajax but unsure what with quite yet
+  }
 
-
-  sendAjax('POST', $("#dragonForm").attr("action"), $("dragonForm").serialize(), function () {
+  sendAjax('POST', $("#dragonForm").attr("action"), $("#dragonForm").serialize(), function () {
     loadDragonsFromServer();
   });
   return false;
@@ -17,7 +16,7 @@ const handleDragon = e => {
 const DragonForm = props => {
   return /*#__PURE__*/React.createElement("form", {
     id: "dragonForm",
-    onsubmit: handleDragon,
+    onSubmit: handleDragon,
     name: "dragonForm",
     action: "/maker",
     method: "POST",
