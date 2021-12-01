@@ -14,6 +14,7 @@ const router = (app) => {
 
     //user page
     app.get('/user', mid.requiresLogin, controllers.Account.userPage);
+    app.post('/user', mid.requiresLogin, controllers.Account.changePassword);
 
     //dragons stuff later
     app.get('/maker', mid.requiresLogin, controllers.Dragon.makerPage);

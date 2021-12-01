@@ -84,7 +84,7 @@ nav:nth-child(1){
 }
 
 //----------------------------------------------------Form stuff---------------------------------------
-.dragonForm{ 
+.dragonForm, .passwordChangeForm{ 
     border: 2px solid $borderColor;
     height: 35px;
     width: 700px;
@@ -95,7 +95,7 @@ nav:nth-child(1){
     border-bottom-left-radius: 4px;
 }
 
-.dragonForm label{
+.dragonForm label, .passwordChangeForm label{
     display: inline-block;
     width: 75px;
     margin-left: 10px;

@@ -5,10 +5,24 @@
 const handlePasswordChange = (e) => {
     e.preventDefault();
 
-    //the rest of this function waits to be filled out till the stuff it's calling exists
+    clearError();
+
+    if($("#newPass1").val() == '' || $("#newPass2").val() == ''){
+        //then one of the new passwords is blank
+        handleError("All fields are required.");
+    }
+
+    if($("#newPass1").val() != $("#newPass2").val()){
+        //if the new passwords dont match
+        handleError("New passwords do not match.");
+    }
+    
+    sendAjax('POST', $("#passwordChangeForm").attr(action), $("#passwordChangeForm").serialize(), redirect);
+
+    return false;
 };
 
-const passwordChangeForm = (e) => {
+const PasswordChangeForm = (props) => {
     return(
         <form id="passwordChangeForm" name="passwordChangeForm"
                 onSubmit={handlePasswordChange}
@@ -31,6 +45,28 @@ const passwordChangeForm = (e) => {
 
 //add premium stuff
 
+const handleGivePremium = (e) => {
+    e.preventDefault();
+
+    clearError();
+
+    //add stuff when ready to do so
+}
+
+const GivePremiumForm = (props) => {
+    return(
+        <form id="givePremiumForm" name="givePremiumForm"
+                onSubmit={handleGivePremium}
+                action="/givePremium" //make that go back to /user!
+                method="POST"
+                className="mainForm"
+            >
+            <input type="hidden" name="_csrf" value={props.csrf} />
+            <input className="formSubmit" type="submit" value="GET PREMIUM!" />
+        </form>
+    );
+}
+
 
 
 //and the final proper setup
@@ -40,10 +76,12 @@ const setup = (csrf) => {
     //may need to do some stuff to be able to call password change and premium
 
     ReactDOM.render(
-        <passwordChangeForm csrf={csrf} />, document.querySelector("#passwordChange")
+        <PasswordChangeForm csrf={csrf} />, document.querySelector("#passwordChange")
     );
 
-    //more stuff later
+    ReactDOM.render(
+        <GivePremiumForm csrf={csrf} />, document.querySelector("#givePremium")
+    );
 };
 
 const getToken = () => {

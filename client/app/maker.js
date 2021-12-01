@@ -81,7 +81,7 @@ const DragonList = function(props) {
     });
 
     return (
-        <div className="domoList">
+        <div className="dragonList">
             {dragonNodes}
         </div>
     );

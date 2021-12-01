@@ -13,13 +13,31 @@ const logout = (req, res) => {
 
 const userPage = (req, res) => {
     //this is to be the page w/ password change form and ability to get premium
-    //okay so it's probably gonna need to call something from the client stuff like login page
-    //and then have the ability to change password and enable premium from there
-    //probably going to need seperate functions for that. I think?
+    res.render('app', {csrfToken: req.csrfToken(), scriptPath: "/assets/userPageBundle.js"});
+}
 
-    //okay that'll render it
-    res.render('userPage', {csrfToken: req.csrfToken});
+const changePassword = (req, res) => {
+    //currently unimplemented
+    //struggling to figure out how to do this one.
+    Account.AccountModel.authenticate(req.session.account.username, req.body.password, (error, doc) =>{
+        //error if something goes wrong, doc is results if works
+        if(err){
+            return res.status(400).json({error:"Something went wrong."});
+        }
 
+        //if no doc and no error account doesn't exist
+        if(!doc){
+            return res.status(401).json({error: "Wrong password."});
+        }
+
+        return Account.AccountModel.generateHash(req.body.newPass1, (salt, hash) => {
+            //and now we actually change the password of the current account.
+        })
+    })
+}
+
+const givePremium = (req, res) => {
+    //currently unimplemented
 }
 
 const login = (request, response) => {
@@ -108,3 +126,4 @@ module.exports.logout = logout;
 module.exports.signup = signup;
 module.exports.getToken = getToken;
 module.exports.userPage = userPage;
+module.exports.changePassword = changePassword;
