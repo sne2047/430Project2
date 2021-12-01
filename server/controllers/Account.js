@@ -16,6 +16,10 @@ const userPage = (req, res) => {
     //okay so it's probably gonna need to call something from the client stuff like login page
     //and then have the ability to change password and enable premium from there
     //probably going to need seperate functions for that. I think?
+
+    //okay that'll render it
+    res.render('userPage', {csrfToken: req.csrfToken});
+
 }
 
 const login = (request, response) => {
@@ -103,3 +107,4 @@ module.exports.login = login;
 module.exports.logout = logout;
 module.exports.signup = signup;
 module.exports.getToken = getToken;
+module.exports.userPage = userPage;

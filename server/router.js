@@ -12,6 +12,9 @@ const router = (app) => {
     app.get('/logout', mid.requiresLogin, controllers.Account.logout);
     app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 
+    //user page
+    app.get('/user', mid.requiresLogin, controllers.Account.userPage);
+
     //dragons stuff later
     app.get('/maker', mid.requiresLogin, controllers.Dragon.makerPage);
     app.post('/maker', mid.requiresLogin, controllers.Dragon.makeDragon);

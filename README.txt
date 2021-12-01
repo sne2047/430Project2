@@ -10,10 +10,10 @@ better css and some html design
     -thinking central column w/ nice background image?
     -actually get own color scheme, thinking reds/pinks with a lot of yellow details?
 add a user page
-    -log in to access
+    -/user
+    -need log in to access
     -can get premium
     -can change password
-    -add it to nav when logged in?
 
 Stretchier Goals
 ability to look at a user's dragons without avtually being logged in as them

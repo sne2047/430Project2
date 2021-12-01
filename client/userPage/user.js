@@ -27,3 +27,31 @@ const passwordChangeForm = (e) => {
         </form>
     );
 }
+
+
+//add premium stuff
+
+
+
+//and the final proper setup
+
+const setup = (csrf) => {
+    //Nav stuff or something idk??
+    //may need to do some stuff to be able to call password change and premium
+
+    ReactDOM.render(
+        <passwordChangeForm csrf={csrf} />, document.querySelector("#passwordChange")
+    );
+
+    //more stuff later
+};
+
+const getToken = () => {
+    sendAjax('GET', '/getToken', null, (result) =>{
+        setup(result.csrfToken);
+    });
+};
+
+$(document).ready(function() {
+    getToken();
+});

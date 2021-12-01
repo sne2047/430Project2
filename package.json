@@ -9,7 +9,7 @@
     "test": "echo \"Tests complete\"",
     "buildSass": "node-sass --include-path scss ./scss/style.scss ./hosted/style.css",
     "buildLoginBundle": "babel ./client/login ./client/helper --presets @babel/preset-react --out-file ./hosted/loginBundle.js",
-    "buildAppBundle": "babel ./client/app ./client/helper --presets @babel/preset-react --out-file ./hosted/bundle.js"
+    "buildAppBundle": "babel ./client/app ./client/userPage ./client/helper --presets @babel/preset-react --out-file ./hosted/bundle.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
