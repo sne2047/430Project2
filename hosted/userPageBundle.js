@@ -64,7 +64,9 @@ const PasswordChangeForm = props => {
 
 const handleGivePremium = e => {
   e.preventDefault();
-  clearError(); //add stuff when ready to do so
+  clearError();
+  sendAjax('POST', $("#givePremiumForm").attr("action"), $("#givePremiumForm").serialize(), redirect);
+  return false;
 };
 
 const GivePremiumForm = props => {

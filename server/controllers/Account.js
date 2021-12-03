@@ -17,8 +17,6 @@ const userPage = (req, res) => {
 }
 
 const changePassword = (req, res) => {
-    //currently unimplemented
-    //struggling to figure out how to do this one.
     Account.AccountModel.authenticate(req.session.account.username, req.body.password, (error, doc) =>{
         //error if something goes wrong, doc is results if works
         if(error){
@@ -35,17 +33,32 @@ const changePassword = (req, res) => {
             let userData = doc;
             userData.salt = salt;
             userData.password = hash;
-            const updatedUser = new Account.AccountModel(userData);
-            const savePromise = updatedUser.save();
+            const savePromise = userData.save();
             savePromise.then(() => res.redirect('/user'))
                 .catch(() => res.status(500).json({err}));
             return null;
-        })
-    })
+        });
+    });
 }
 
 const givePremium = (req, res) => {
-    //currently unimplemented
+    Account.AccountModel.findByUsername(req.session.account.username, (err, doc) => {
+        //error if something goes wrong, or if a doc isnt returned
+        if(err || !doc){
+            return res.status(400).json({error: "Something went wrong."});
+        }
+
+        /*if(doc.premium == true){
+            return some response
+        }*/
+
+        let userData = doc;
+        userData.premium = true;
+        const savePromise = userData.save();
+        savePromise.then(() => res.redirect('/user'))
+            .catch(() => res.status(500).json({err}));
+        return null;
+    });
 }
 
 const login = (request, response) => {
@@ -135,3 +148,4 @@ module.exports.signup = signup;
 module.exports.getToken = getToken;
 module.exports.userPage = userPage;
 module.exports.changePassword = changePassword;
+module.exports.givePremium = givePremium;

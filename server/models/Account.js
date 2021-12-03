@@ -67,6 +67,25 @@ AccountSchema.statics.generateHash = (password, callback) => {
     crypto.pbkdf2(password, salt, iterations, keyLength, 'RSA-SHA512', (err, hash) => callback(salt, hash.toString('hex')));
 };
 
+AccountSchema.statics.isPremium = (username, callback) => {
+    AccountModel.findByUsername(username, (err, doc) => {
+        if(err){
+            return callback(err);
+        }
+
+        if(!doc){
+            return callback(null, false);
+        }
+
+        if(doc.isPremium == true){
+            return callback(null, true);
+        }
+        else{
+            return callback(null, false);
+        }
+    });
+}
+
 AccountSchema.statics.authenticate = (username, password, callback) => {
     AccountModel.findByUsername(username, (err,doc) => {
         if(err) {

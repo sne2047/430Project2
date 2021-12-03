@@ -50,14 +50,16 @@ const handleGivePremium = (e) => {
 
     clearError();
 
-    //add stuff when ready to do so
+    sendAjax('POST', $("#givePremiumForm").attr("action"), $("#givePremiumForm").serialize(), redirect);
+
+    return false;
 }
 
 const GivePremiumForm = (props) => {
     return(
         <form id="givePremiumForm" name="givePremiumForm"
                 onSubmit={handleGivePremium}
-                action="/givePremium" //make that go back to /user!
+                action="/givePremium" 
                 method="POST"
                 className="mainForm"
             >
