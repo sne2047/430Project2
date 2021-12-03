@@ -8,7 +8,6 @@ Feedback that changing password did work
 better css and some html design 
     -Forms need a lot of html work
     -proper spacing on sections
-    -thinking central column w/ nice background image?
 add a user page
     -can get premium
 
@@ -18,6 +17,7 @@ ability to look at a user's dragons without avtually being logged in as them
 Make error messages less domo-like, appear in center rather than sliding in from edge
 
 Done:
+Nice background img
 Change password WORKS
 Account controller and models
 Account is in index.js
