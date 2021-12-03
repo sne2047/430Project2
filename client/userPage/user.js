@@ -17,7 +17,7 @@ const handlePasswordChange = (e) => {
         handleError("New passwords do not match.");
     }
     
-    sendAjax('POST', $("#passwordChangeForm").attr(action), $("#passwordChangeForm").serialize(), redirect);
+    sendAjax('POST', $("#passwordChangeForm").attr("action"), $("#passwordChangeForm").serialize(), redirect);
 
     return false;
 };

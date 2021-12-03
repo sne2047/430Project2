@@ -1,9 +1,11 @@
 const handleError = (message) => {
     $("#errorMessage").text(message);
+    $("#errorDiv").animate({width:'toggle'},350);
 };
 
 const clearError = () => {
     $("#errorMessage").text("");
+    $("#errorDiv").animate({width:'hide'},350);
 }
 
 const redirect = (response) => {

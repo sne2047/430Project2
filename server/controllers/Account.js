@@ -21,7 +21,7 @@ const changePassword = (req, res) => {
     //struggling to figure out how to do this one.
     Account.AccountModel.authenticate(req.session.account.username, req.body.password, (error, doc) =>{
         //error if something goes wrong, doc is results if works
-        if(err){
+        if(error){
             return res.status(400).json({error:"Something went wrong."});
         }
 
@@ -32,6 +32,14 @@ const changePassword = (req, res) => {
 
         return Account.AccountModel.generateHash(req.body.newPass1, (salt, hash) => {
             //and now we actually change the password of the current account.
+            let userData = doc;
+            userData.salt = salt;
+            userData.password = hash;
+            const updatedUser = new Account.AccountModel(userData);
+            const savePromise = updatedUser.save();
+            savePromise.then(() => res.redirect('/user'))
+                .catch(() => res.status(500).json({err}));
+            return null;
         })
     })
 }

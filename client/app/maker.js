@@ -5,6 +5,7 @@ const handleDragon = (e) => {
 
     if($("#dragonName").val() == ''){
         //possibly if any of the others are at -1?
+        handleError("A name is needed to create a dragon.")
         return false;
     }
 

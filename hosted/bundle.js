@@ -4,6 +4,7 @@ const handleDragon = e => {
 
   if ($("#dragonName").val() == '') {
     //possibly if any of the others are at -1?
+    handleError("A name is needed to create a dragon.");
     return false;
   }
 
@@ -103,7 +104,7 @@ const DragonList = function (props) {
     }, "Name: ", dragon.name), /*#__PURE__*/React.createElement("p", null, dragon.description));
   });
   return /*#__PURE__*/React.createElement("div", {
-    className: "domoList"
+    className: "dragonList"
   }, dragonNodes);
 };
 
@@ -136,10 +137,16 @@ $(document).ready(function () {
 });
 const handleError = message => {
   $("#errorMessage").text(message);
+  $("#errorDiv").animate({
+    width: 'toggle'
+  }, 350);
 };
 
 const clearError = () => {
   $("#errorMessage").text("");
+  $("#errorDiv").animate({
+    width: 'hide'
+  }, 350);
 };
 
 const redirect = response => {

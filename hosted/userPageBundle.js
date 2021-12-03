@@ -2,7 +2,21 @@
 //critical functions: if logged in, allow user to activate premiun and change password
 //password change stuff first!
 const handlePasswordChange = e => {
-  e.preventDefault(); //the rest of this function waits to be filled out till the stuff it's calling exists
+  e.preventDefault();
+  clearError();
+
+  if ($("#newPass1").val() == '' || $("#newPass2").val() == '') {
+    //then one of the new passwords is blank
+    handleError("All fields are required.");
+  }
+
+  if ($("#newPass1").val() != $("#newPass2").val()) {
+    //if the new passwords dont match
+    handleError("New passwords do not match.");
+  }
+
+  sendAjax('POST', $("#passwordChangeForm").attr("action"), $("#passwordChangeForm").serialize(), redirect);
+  return false;
 };
 
 const PasswordChangeForm = props => {
@@ -46,7 +60,32 @@ const PasswordChangeForm = props => {
     value: "Change Password"
   }));
 }; //add premium stuff
-//and the final proper setup
+
+
+const handleGivePremium = e => {
+  e.preventDefault();
+  clearError(); //add stuff when ready to do so
+};
+
+const GivePremiumForm = props => {
+  return /*#__PURE__*/React.createElement("form", {
+    id: "givePremiumForm",
+    name: "givePremiumForm",
+    onSubmit: handleGivePremium,
+    action: "/givePremium" //make that go back to /user!
+    ,
+    method: "POST",
+    className: "mainForm"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "hidden",
+    name: "_csrf",
+    value: props.csrf
+  }), /*#__PURE__*/React.createElement("input", {
+    className: "formSubmit",
+    type: "submit",
+    value: "GET PREMIUM!"
+  }));
+}; //and the final proper setup
 
 
 const setup = csrf => {
@@ -54,7 +93,10 @@ const setup = csrf => {
   //may need to do some stuff to be able to call password change and premium
   ReactDOM.render( /*#__PURE__*/React.createElement(PasswordChangeForm, {
     csrf: csrf
-  }), document.querySelector("#passwordChange")); //more stuff later
+  }), document.querySelector("#passwordChange"));
+  ReactDOM.render( /*#__PURE__*/React.createElement(GivePremiumForm, {
+    csrf: csrf
+  }), document.querySelector("#givePremium"));
 };
 
 const getToken = () => {
@@ -68,10 +110,16 @@ $(document).ready(function () {
 });
 const handleError = message => {
   $("#errorMessage").text(message);
+  $("#errorDiv").animate({
+    width: 'toggle'
+  }, 350);
 };
 
 const clearError = () => {
   $("#errorMessage").text("");
+  $("#errorDiv").animate({
+    width: 'hide'
+  }, 350);
 };
 
 const redirect = response => {

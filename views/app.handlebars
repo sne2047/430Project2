@@ -20,14 +20,20 @@
             <div class="navlink"><a href="/maker">Dragon Creator</a></div>
             <div class="navlink"><a href="/user">User Page</a></div>
         </nav>
-        <main>
-            <!--a ton of sections for the the the react to play with goes here-->
-            <section id="makeDragon"></section>
-            <span id="errorMessage"></span>
-            <section id="Dragons"></section>
-            <section id="passwordChange"></section>
-            <section id="givePremium"></section>
-            <script src={{scriptPath}}></script>
-        </main>
+        <div id="centralSection">
+            <img src="assets/img/backgroundImageLeft.png" alt="lava" />
+            <main>
+                <!--a ton of sections for the the the react to play with goes here-->
+                <section id="makeDragon"></section>
+                <div id="errorDiv"><img id="speech" src="assets/img/speechBubble.png" alt="speech box" />
+                    <h3><span id="errorMessage"></span></h3>
+                </div>
+                <section id="Dragons"></section>
+                <section id="passwordChange"></section>
+                <section id="givePremium"></section>
+                <script src={{scriptPath}}></script>
+            </main>
+            <img src="assets/img/backgroundImageRight.png" alt="lava" />
+        </div>
     </body>
 </html>
