@@ -96,12 +96,40 @@ const DragonList = function (props) {
   }
 
   const dragonNodes = props.dragons.map(function (dragon) {
-    return /*#__PURE__*/React.createElement("div", {
-      key: dragon._id,
-      className: "dragon"
-    }, /*#__PURE__*/React.createElement("h3", {
-      className: "dragonDescription"
-    }, "Name: ", dragon.name), /*#__PURE__*/React.createElement("p", null, dragon.description));
+    return (
+      /*#__PURE__*/
+      //redo the div to display images
+
+      /*
+      <div key={dragon._id} className="dragon">
+          <h3 className="dragonDescription">
+              Name: {dragon.name}
+          </h3>
+          <p>
+              {dragon.description}
+          </p>
+      </div>
+      */
+      React.createElement("div", {
+        key: dragon._id,
+        className: "dragon"
+      }, /*#__PURE__*/React.createElement("h3", {
+        className: "dragonName"
+      }, "Name: ", dragon.name), /*#__PURE__*/React.createElement("div", {
+        className: "dragonImageBox"
+      }, /*#__PURE__*/React.createElement("img", {
+        src: dragon.imageLinks.body,
+        alt: dragon.descripion
+      }), /*#__PURE__*/React.createElement("img", {
+        className: "dragonPart",
+        src: dragon.imageLinks.horns,
+        alt: ""
+      }), /*#__PURE__*/React.createElement("img", {
+        className: "dragonPart",
+        src: dragon.imageLinks.eyes,
+        alt: ""
+      })))
+    );
   });
   return /*#__PURE__*/React.createElement("div", {
     className: "dragonList"

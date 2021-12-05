@@ -37,6 +37,7 @@ const changePassword = (req, res) => {
             savePromise.then(() => res.redirect('/user'))
                 .catch(() => res.status(500).json({err}));
             return null;
+            //want some kind of feedback. Not critical.
         });
     });
 }

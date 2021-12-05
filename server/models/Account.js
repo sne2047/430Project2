@@ -77,7 +77,7 @@ AccountSchema.statics.isPremium = (username, callback) => {
             return callback(null, false);
         }
 
-        if(doc.isPremium == true){
+        if(doc.premium == true){
             return callback(null, true);
         }
         else{

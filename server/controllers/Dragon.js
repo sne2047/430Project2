@@ -85,6 +85,8 @@ const getDragons = (request, response) => {
         //later want to alter this for image links or whatever
         docs.forEach((item, index) => {
             docs[index].description = Dragon.DragonModel.getDescription(item);
+            docs[index].name = item.name;
+            docs[index].imageLinks = Dragon.DragonModel.getImageLinks(item);
         });
 
         return res.json({dragons: docs});

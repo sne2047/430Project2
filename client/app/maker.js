@@ -69,7 +69,8 @@ const DragonList = function(props) {
     }
 
     const dragonNodes = props.dragons.map(function(dragon) {
-        return (
+        return (//redo the div to display images
+            /*
             <div key={dragon._id} className="dragon">
                 <h3 className="dragonDescription">
                     Name: {dragon.name}
@@ -78,6 +79,17 @@ const DragonList = function(props) {
                     {dragon.description}
                 </p>
             </div>
+            */
+           <div key={dragon._id} className="dragon">
+               <h3 className="dragonName">
+                    Name: {dragon.name}
+               </h3>
+               <div className="dragonImageBox">
+                    <img src={dragon.imageLinks.body} alt={dragon.descripion} />
+                    <img className="dragonPart" src={dragon.imageLinks.horns} alt="" />
+                    <img className="dragonPart" src={dragon.imageLinks.eyes} alt="" />
+               </div>
+           </div>
         );
     });
 

@@ -19,6 +19,8 @@ $buttonText: white;
 $buttonHover: #e54a5c;
 $backgroundColor: #e6a49b;
 $borderColor: #a96b00;
+$dragonBoxBackground: #e8e8e8;
+$dragonSpaceColor: #000000;
 
 
 //------------------------------some general basics-----------------------------
@@ -94,6 +96,44 @@ nav:nth-child(1){
     background-color: $buttonHover;
 }
 
+//----------------------------------------------------------Getting dragon images to work--------------------------
+
+//hopefully these first two bits will get the images to stack
+.dragonImageBox{
+    position: relative;
+    background-color: $dragonBoxBackground;
+    border: 2px solid $borderColor;
+}
+
+.dragonPart{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.dragon{
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $dragonSpaceColor;
+    border: 2px solid $borderColor;
+    padding: 5px;
+}
+
+.dragonName{
+    background-color: $accentBackground;
+    color: $buttonText;
+    border: 2px solid $borderColor;
+}
+
+.dragonList{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 //----------------------------------------------------Form stuff---------------------------------------
 .dragonForm, .mainForm{ 
     border: 2px solid $borderColor;
@@ -107,12 +147,17 @@ nav:nth-child(1){
 }
 
 .dragonForm label, .mainForm label{
-    display: inline-block;
-    width: 75px;
     margin-left: 10px;
     font-size: 1.2em;
-    float: left;
     color: $buttonText;
+}
+
+#dragonName{
+    display: block;
+}
+
+.makeDragonSubmit, .formSubmit{
+    display: block;
 }
 
 //----------------------------------------------------------Error Message-----------------------

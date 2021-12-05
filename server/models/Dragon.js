@@ -71,22 +71,22 @@ const DragonSchema = new mongoose.Schema({
 const bodyColors = {
     0:{
         name: "Red",
-        //add an img link
+        link: "assets/img/dragonImages/redDragonBase.png",
         premium: false
     },
     1:{
         name:"Green",
-        //add an img link
+        link: "assets/img/dragonImages/greenDragonBase.png",
         premium: false
     },
     2:{
         name:"Blue",
-        //add an img link
+        link: "assets/img/dragonImages/blueDragonBase.png",
         premium: false
     },
     3:{
         name:"Purple",
-        //add an img link
+        link: "assets/img/dragonImages/purpleDragonBase.png",
         premium: true
     }
 };
@@ -94,17 +94,17 @@ const bodyColors = {
 const hornTypes = {
     0:{
         name: "Straight",
-        //add part of a link, needs combine with horn color
+        link: "StraightHorns.png",
         premium: false
     },
     1:{
         name: "Swooped back",
-        //partial link
+        link: "SwoopedBackHorns.png",
         premium: false
     },
     2:{
         name: "Coiled",
-        //partial link
+        link: "CoiledHorns.png",
         premium: true
     }
 };
@@ -112,17 +112,17 @@ const hornTypes = {
 const hornColors = {
     0:{
         name: "Tan",
-        //partial link
+        link: "assets/img/dragonImages/tan",
         premium: false
     },
     1:{
         name:"Dark",
-        //partial link
+        link: "assets/img/dragonImages/dark",
         premium: false
     },
     2:{
         name:"Gold",
-        //partial link
+        link: "assets/img/dragonImages/gold",
         premium: true
     }
 };
@@ -130,17 +130,17 @@ const hornColors = {
 const eyeTypes = {
     0:{
         name: "Standard",
-        //img link
+        link: "assets/img/dragonImages/standardEyes.png",
         premium: false
     },
     1:{
         name: "Cute",
-        //img link
+        link: "assets/img/dragonImages/cuteEyes.png",
         premium: false
     },
     2:{
         name: "Multiple",
-        //img link
+        link: "assets/img/dragonImages/multipleEyes.png",
         premium: true
     }
 };
@@ -171,6 +171,14 @@ DragonSchema.statics.getDescription = (doc) => (
 
 
 //one later, to get a dragon's imgs
+DragonSchema.statics.getImageLinks = (doc) => {
+    let imgLinks = {
+        body: bodyColors[doc.bodyColor].link,
+        horns: `${hornColors[doc.hornColor].link}${hornTypes[doc.hornType].link}`,
+        eyes: eyeTypes[doc.eyeType].link
+    };
+    return imgLinks;
+}
 
 
 //General statics

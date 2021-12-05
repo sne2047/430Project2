@@ -63,6 +63,36 @@ nav:nth-child(1) {
   transition: background-color 0.8s ease;
   background-color: #e54a5c; }
 
+.dragonImageBox {
+  position: relative;
+  background-color: #e8e8e8;
+  border: 2px solid #a96b00; }
+
+.dragonPart {
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.dragon {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #000000;
+  border: 2px solid #a96b00;
+  padding: 5px; }
+
+.dragonName {
+  background-color: #cf3446;
+  color: white;
+  border: 2px solid #a96b00; }
+
+.dragonList {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly; }
+
 .dragonForm, .mainForm {
   border: 2px solid #a96b00;
   height: auto;
@@ -74,12 +104,15 @@ nav:nth-child(1) {
   border-bottom-left-radius: 4px; }
 
 .dragonForm label, .mainForm label {
-  display: inline-block;
-  width: 75px;
   margin-left: 10px;
   font-size: 1.2em;
-  float: left;
   color: white; }
+
+#dragonName {
+  display: block; }
+
+.makeDragonSubmit, .formSubmit {
+  display: block; }
 
 #errorDiv {
   display: none;
