@@ -77,20 +77,20 @@ const getDragons = (request, response) => {
   const req = request;
   const res = response;
 
-  return Dragon.DragonModel.findByOwner(req.session.account._id, (err, docs) => {
+  return Dragon.DragonModel.findByOwner(req.session.account._id, (err, documents) => {
     if (err) {
       console.log(err);
       return res.status(400).json({ error: 'An error occurred.' });
     }
 
-    let toReturn;
+    const docs = documents;
     docs.forEach((item, index) => {
-      toReturn[index].description = Dragon.DragonModel.getDescription(item);
-      toReturn[index].name = item.name;
-      toReturn[index].imageLinks = Dragon.DragonModel.getImageLinks(item);
+      docs[index].description = Dragon.DragonModel.getDescription(item);
+      docs[index].name = item.name;
+      docs[index].imageLinks = Dragon.DragonModel.getImageLinks(item);
     });
 
-    return res.json({ dragons: toReturn });
+    return res.json({ dragons: docs });
   });
 };
 
