@@ -2,25 +2,25 @@ const controllers = require('./controllers');
 const mid = require('./middleware');
 
 const router = (app) => {
-    //route stuff here, app.post and app.get things
+  // route stuff here, app.post and app.get things
 
-    //first basic account stuff
-    app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
-    app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
-    app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);
-    app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
-    app.get('/logout', mid.requiresLogin, controllers.Account.logout);
-    app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
+  // first basic account stuff
+  app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
+  app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
+  app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);
+  app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
+  app.get('/logout', mid.requiresLogin, controllers.Account.logout);
+  app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 
-    //user page
-    app.get('/user', mid.requiresLogin, controllers.Account.userPage);
-    app.post('/user', mid.requiresLogin, controllers.Account.changePassword);
-    app.post('/givePremium', mid.requiresLogin, controllers.Account.givePremium);
+  // user page
+  app.get('/user', mid.requiresLogin, controllers.Account.userPage);
+  app.post('/user', mid.requiresLogin, controllers.Account.changePassword);
+  app.post('/givePremium', mid.requiresLogin, controllers.Account.givePremium);
 
-    //dragons stuff later
-    app.get('/maker', mid.requiresLogin, controllers.Dragon.makerPage);
-    app.post('/maker', mid.requiresLogin, controllers.Dragon.makeDragon);
-    app.get('/getDragons', mid.requiresLogin, controllers.Dragon.getDragons);
+  // dragons stuff later
+  app.get('/maker', mid.requiresLogin, controllers.Dragon.makerPage);
+  app.post('/maker', mid.requiresLogin, controllers.Dragon.makeDragon);
+  app.get('/getDragons', mid.requiresLogin, controllers.Dragon.getDragons);
 };
 
 module.exports = router;
